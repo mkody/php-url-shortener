@@ -23,7 +23,7 @@ $db->set_charset('utf8mb4');
 $url = $db->real_escape_string($url);
 
 function randString($length = 8) {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
     $charactersLength = strlen($characters);
     $randomString = '';
     for ($i = 0; $i < $length; $i++) {
@@ -40,7 +40,7 @@ if ($result && $result->num_rows > 0) { // If there’s already a short URL for 
 		die($domain . $result->fetch_object()->slug);
 	}
 } else {
-	$slug = randString(5);
+	$slug = randString(SLUG_SIZE);
 	$is_unique = false;
 
 	while (!$is_unique) {
@@ -57,7 +57,7 @@ if ($result && $result->num_rows > 0) { // If there’s already a short URL for 
 				$db->query('OPTIMIZE TABLE `redirect`');
 			}
 		} else {                   // if you DO get a result, keep trying
-        	$slug = randString(5);
+        	$slug = randString(SLUG_SIZE);
 		}
 	}
 }
