@@ -7,6 +7,9 @@ define('MYSQL_DATABASE', 'short');
 define('TWITTER_USERNAME', 'Twitter');
 define('GOOGLE_PLUS_ID', '+Google');
 define('SLUG_SIZE', 5); // The lenght of your slug
-define('DEFAULT_URL', 'http://www.exemple.com'); // omit the trailing slash!
-
+if($_SERVER['HTTP_HOST'] == "nlr.pw") {
+    define('DEFAULT_URL', 'https://www.newlunarrepublic.fr'); // omit the trailing slash!
+} else {
+    define('DEFAULT_URL', 'https://www.radiobrony.fr'); // omit the trailing slash!
+}
 ?>

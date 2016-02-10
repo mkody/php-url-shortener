@@ -8,10 +8,18 @@ if (isset($_GET['slug'])) {
 
 	$slug = $_GET['slug'];
 
+	$db = new MySQLi(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
+	$db->set_charset('utf8mb4');
+
 	if ('@' == $slug) {
 		$url = 'https://twitter.com/' . TWITTER_USERNAME;
 	} else if (' ' == $slug) { // +
 		$url = 'https://plus.google.com/u/0/' . GOOGLE_PLUS_ID . '/posts';
+	} else if ('ep' == substr($slug, 0, 2) && is_numeric(substr($slug, 3, 3))) { // episode at NLR
+		$slug = substr($slug, 2);
+		$db->query('UPDATE nlr SET hits = hits + 1 WHERE slug = "' . $slug . '"');
+		$db->close();
+		$url = 'http://www.newlunarrepublic.fr/episodes/episode.php?numeptt='. $slug;
 	} else {
 
 		$slug = preg_replace('/[^a-z0-9]/si', '', $slug);
@@ -19,9 +27,6 @@ if (isset($_GET['slug'])) {
 		if (is_numeric($slug) && strlen($slug) > 8) {
 			$url = 'https://twitter.com/' . TWITTER_USERNAME . '/status/' . $slug;
 		} else {
-
-			$db = new MySQLi(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
-			$db->set_charset('utf8mb4');
 
 			$escapedSlug = $db->real_escape_string($slug);
 			$redirectResult = $db->query('SELECT url FROM redirect WHERE slug = "' . $escapedSlug . '"');

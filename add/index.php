@@ -8,12 +8,9 @@
     <!-- load MUI -->
     <link href="//cdn.muicss.com/mui-0.1.18/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="//cdn.muicss.com/mui-0.1.18/js/mui.min.js"></script>
-    <script src="//code.jquery.com/jquery-latest.js"></script> <!-- load jquery via CDN -->
+    <link href="custom.css" rel="stylesheet" type="text/css" />
 
-    <style>
-      .highlight {background: #F8F8F8 none repeat scroll 0% 0%;}
-      .highlight pre {margin-top: -10px;}
-    </style>
+    <script src="//code.jquery.com/jquery-latest.js"></script> <!-- load jquery via CDN -->
     <script>
         $(document).ready(function() {//start document ready
             $('.mui-btn').click(function (e){
@@ -24,9 +21,17 @@
                 url: 'http://<?php echo $_SERVER['HTTP_HOST']; ?>/shorten.php?url=' + encodeURIComponent($("#url").val()) + '&s=1',
                 success: function(d){
                     if (d.indexOf(" ") > -1) {
-                      $("#result").val(d);
+                      $("#result1").val(d);
+                      $("#result2").val(d);
+                      $("#result3").val(d);
+                      $("#result4").val(d);
+                      $("#result5").val(d);
                     } else {
-                      $("#result").val('http://<?php echo $_SERVER['HTTP_HOST']; ?>/' + d);
+                      $("#result1").val('http://clop.xyz/' + d);
+                      $("#result2").val('http://brony.xyz/' + d);
+                      $("#result3").val('http://bronies.xyz/' + d);
+                      $("#result4").val('http://ponies.xyz/' + d);
+                      $("#result5").val('http://nlr.pw/' + d);
                     }
                 }
             });
@@ -48,7 +53,11 @@
           <button type="submit" class="mui-btn mui-btn-default mui-btn-raised">Submit</button>
         </form>
         <form class="mui-form-inline">
-         <input type="text" class="mui-form-control" id="result" value="http://<?php echo $_SERVER['HTTP_HOST']; ?>/">
+         <input type="text" class="mui-form-control" id="result1" value="http://clop.xyz/">
+         <input type="text" class="mui-form-control" id="result2" value="http://brony.xyz/">
+         <input type="text" class="mui-form-control" id="result3" value="http://bronies.xyz/">
+         <input type="text" class="mui-form-control" id="result4" value="http://ponies.xyz/">
+         <input type="text" class="mui-form-control" id="result5" value="http://nlr.pw/">
         </form>
       </div>
       <div class="mui-panel">
