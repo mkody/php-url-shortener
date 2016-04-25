@@ -20,6 +20,8 @@ if (isset($_GET['slug'])) {
 		$db->query('UPDATE nlr SET hits = hits + 1 WHERE slug = "' . $slug . '"');
 		$db->close();
 		$url = 'http://www.newlunarrepublic.fr/episodes/episode.php?numeptt='. $slug;
+	} else if ($slug == "faq") {
+		$url = FAQ_URL;
 	} else {
 
 		$slug = preg_replace('/[^a-z0-9]/si', '', $slug);
