@@ -25,13 +25,11 @@
                       $("#result2").val(d);
                       $("#result3").val(d);
                       $("#result4").val(d);
-                      $("#result5").val(d);
                     } else {
                       $("#result1").val('http://clop.xyz/' + d);
                       $("#result2").val('http://brony.xyz/' + d);
-                      $("#result3").val('http://bronies.xyz/' + d);
-                      $("#result4").val('http://ponies.xyz/' + d);
-                      $("#result5").val('http://nlr.pw/' + d);
+                      $("#result3").val('http://ponies.xyz/' + d);
+                      $("#result4").val('http://nlr.pw/' + d);
                     }
                 }
             });
@@ -55,9 +53,8 @@
         <form class="mui-form-inline">
          <input type="text" class="mui-form-control" id="result1" value="http://clop.xyz/">
          <input type="text" class="mui-form-control" id="result2" value="http://brony.xyz/">
-         <input type="text" class="mui-form-control" id="result3" value="http://bronies.xyz/">
-         <input type="text" class="mui-form-control" id="result4" value="http://ponies.xyz/">
-         <input type="text" class="mui-form-control" id="result5" value="http://nlr.pw/">
+         <input type="text" class="mui-form-control" id="result3" value="http://ponies.xyz/">
+         <input type="text" class="mui-form-control" id="result4" value="http://nlr.pw/">
         </form>
       </div>
       <div class="mui-panel">
